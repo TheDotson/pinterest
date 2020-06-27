@@ -1,7 +1,15 @@
+import firebase from 'firebase/app';
+import apiKeys from './helpers/apiKeys.json';
+import auth from './components/auth/auth';
+import myNavbar from './components/navbar/navbar';
+import authData from './helpers/data/authData';
 import '../styles/main.scss';
 
 const init = () => {
-  console.error('hello!');
+  firebase.initializeApp(apiKeys.firebaseConfig);
+  authData.checkLoginStatus();
+  auth.loginButton();
+  myNavbar.logoutEvent();
 };
 
 init();
