@@ -1,23 +1,23 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-const authDiv = $('#auth');
+const loginButton = $('#google-auth');
 const logoutButton = $('#navbar-logout-button');
-const boardDiv = $('#boards');
-const homeDiv = $('#home');
+const boardsDiv = $('#boards');
+const pinsDiv = $('#pins');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      authDiv.addClass('hide');
+      loginButton.addClass('hide');
       logoutButton.removeClass('hide');
-      boardDiv.removeClass('hide');
-      homeDiv.addClass('hide');
+      boardsDiv.removeClass('hide');
+      pinsDiv.removeClass('hide');
     } else {
-      authDiv.removeClass('hide');
+      loginButton.removeClass('hide');
       logoutButton.addClass('hide');
-      boardDiv.addClass('hide');
-      homeDiv.removeClass('hide');
+      boardsDiv.addClass('hide');
+      pinsDiv.addClass('hide');
     }
   });
 };
