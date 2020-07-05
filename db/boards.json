@@ -1,14 +1,11 @@
 {
   "board1": {
-    "name": "Games",
-    "userID": "3Vd6if5SBEhC9jvPnecyzmEoUNR2"
+    "name": "Games"
   },
   "board2": {
-    "name": "Movies",
-    "userID": "3Vd6if5SBEhC9jvPnecyzmEoUNR2"
+    "name": "Movies/TV"
   },
   "board3": {
-    "name": "Music",
-    "userID": "3Vd6if5SBEhC9jvPnecyzmEoUNR2"
+    "name": "Music"
   }
 }
