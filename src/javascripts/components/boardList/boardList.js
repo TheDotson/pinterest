@@ -9,7 +9,7 @@ const buildMyBoards = () => {
       const myBoards = response;
       let domString = `
       <h2 class="text-center">My Boards</h2>
-      <div class="d-flex flex-wrap myBoards card-deck">`;
+      <div class="d-flex flex-wrap boards card-deck">`;
 
       myBoards.forEach((board) => {
         domString += boards.boardBuilder(board);
@@ -18,7 +18,7 @@ const buildMyBoards = () => {
 
       utils.printToDom('#boards', domString);
 
-      $('body').on('click', '.view-button', singleBoard.buildSingleBoard);
+      $('body').on('click', '.view-board', singleBoard.buildSingleBoard);
     })
     .catch((err) => console.error('getBoards broke', err));
 };
