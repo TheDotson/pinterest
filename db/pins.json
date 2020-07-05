@@ -1,0 +1,31 @@
+{
+  "pin1":{
+    "name":"Persona 5 Royal",
+    "imgURL": "https://bit.ly/31N3Eoo"
+
+  },
+  "pin2":{
+    "name":"Final Fantasy XIV - Shadowbringers",
+    "imgURL": "https://bit.ly/3iAqjdx"
+
+  },
+  "pin3":{
+    "name":"God of War",
+    "imgURL": "https://bit.ly/38xUihU"
+
+  },
+  "pin4":{
+    "name":"The Shining",
+    "imgURL": "https://bit.ly/3izjzwL"
+
+  },
+  "pin5":{
+    "name":"Dawn of the Dead",
+    "imgURL": "https://bit.ly/3feBIxT"
+
+  },
+  "pin6":{
+    "name":"Ghost - Prequelle",
+    "imgURL": "https://bit.ly/3grBfsc"
+  }
+}
