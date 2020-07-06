@@ -2,7 +2,7 @@ import utils from '../../helpers/utils';
 
 const homeBuilder = () => {
   const domString = `
-  <div class="col-6">
+  <div class="text-center mt-3">
     <h1>Pinterest</h1>
   </div>`;
 
