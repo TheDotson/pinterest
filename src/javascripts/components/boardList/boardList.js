@@ -4,6 +4,10 @@ import boards from '../boards/boards';
 import singleBoard from '../singleBoard/singleBoard';
 import divManip from '../divManip/divManip';
 
+const deleteBoardEvent = (e) => {
+  console.error(e);
+};
+
 const buildMyBoards = () => {
   boardData.getBoards()
     .then((response) => {
