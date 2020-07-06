@@ -21,6 +21,7 @@ const buildMyBoards = () => {
 
       $('body').on('click', '#view-board', singleBoard.buildSingleBoard);
       $('body').on('click', '#view-board', divManip.hideBoards);
+      $('body').on('click', '#delete-board', deleteBoardEvent);
     })
     .catch((err) => console.error('getBoards broke', err));
 };

@@ -4,6 +4,7 @@ const boardBuilder = (board) => {
       <div class="card-body" id="${board.id}">
         <h5 class="card-title">${board.name}</h5>
         <button id="view-board" class="btn btn-secondary">View Board</button>
+        <button id="delete-board" class="btn btn-secondary">Delete</button>
       </div>
     </div>`;
 
