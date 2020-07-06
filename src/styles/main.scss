@@ -2,9 +2,39 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 body {
-  background-color: whitesmoke
+  background-color: whitesmoke;
 }
 
 .hide {
   display: none;
+}
+
+.board-card {
+  background-color: rgb(222, 236, 248);
+  border: solid 2px gray;
+}
+
+.pin-card {
+  background-color: rgb(222, 236, 248);
+  border: 0px;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color:rgb(212, 212, 212);
+}
+
+.pins-card:hover .overlay{
+  opacity: 0.75;
+  pointer-events: none;
 }
