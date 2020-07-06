@@ -1,3 +1,11 @@
+const showDiv = () => {
+  $('#boards').removeClass('hide');
+};
+
+const hideDiv = () => {
+  $('#boards').addClass('hide');
+};
+
 const boardBuilder = (board) => {
   const domString = `
   <div class="card text-center" id="${board.id}">
@@ -10,4 +18,4 @@ const boardBuilder = (board) => {
   return domString;
 };
 
-export default { boardBuilder };
+export default { boardBuilder, showDiv, hideDiv };
