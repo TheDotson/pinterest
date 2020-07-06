@@ -16,8 +16,9 @@ const buildSingleBoard = (e) => {
             <img src="${pin.imageUrl}" class="card-img-top" alt="...">
             <div class="card-body">
               <a target="_blank" href="${pin.link}" class="btn btn-primary">View Pin</a>
-              </div>
-              </div>`;
+              <button class="btn btn-secondary delete-pin" id="${pin.boardId}">Delete pin</button>
+            </div>
+          </div>`;
         }
       });
       domString += '</div>';
