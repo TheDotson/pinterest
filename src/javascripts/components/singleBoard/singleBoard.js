@@ -22,6 +22,11 @@ const buildSingleBoard = (e) => {
       });
       domString += '</div>';
 
+      domString += `
+      <div class="text-center mt-5">
+        <button class="btn btn-danger" id="back-button">Back</button>
+      </div>`;
+
       utils.printToDom('#pins', domString);
     })
     .catch((err) => console.error('singleBoards broke', err));
