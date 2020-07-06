@@ -3,7 +3,7 @@ const boardBuilder = (board) => {
     <div class="card text-center board-card" id="${board.id}">
       <div class="card-body" id="${board.id}">
         <h5 class="card-title">${board.name}</h5>
-        <button class="btn btn-secondary view-board">View Board</button>
+        <button id="view-board" class="btn btn-secondary">View Board</button>
       </div>
     </div>`;
 

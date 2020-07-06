@@ -2,6 +2,7 @@ import utils from '../../helpers/utils';
 import boardData from '../../helpers/data/boardData';
 import boards from '../boards/boards';
 import singleBoard from '../singleBoard/singleBoard';
+import divManip from '../divManip/divManip';
 
 const buildMyBoards = () => {
   boardData.getBoards()
@@ -18,7 +19,8 @@ const buildMyBoards = () => {
 
       utils.printToDom('#boards', domString);
 
-      $('body').on('click', '.view-board', singleBoard.buildSingleBoard);
+      $('body').on('click', '#view-board', singleBoard.buildSingleBoard);
+      $('body').on('click', '#view-board', divManip.hideBoards);
     })
     .catch((err) => console.error('getBoards broke', err));
 };
