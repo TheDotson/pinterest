@@ -18,7 +18,7 @@ const buildMyBoards = () => {
 
       utils.printToDom('#boards', domString);
 
-      $('body').on('click', '.view-board', singleBoard.buildSingleBoard);
+      $('body').on('click', '#view-board', singleBoard.buildSingleBoard);
     })
     .catch((err) => console.error('getBoards broke', err));
 };
