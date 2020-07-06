@@ -1,9 +1,11 @@
 import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
+import divManip from '../divManip/divManip';
 import './singleBoard.scss';
 
 const buildSingleBoard = (e) => {
   const boardId = e.target.closest('.card').id;
+  divManip.showPins();
   pinData.getPins()
     .then((response) => {
       const myPins = response;
@@ -29,6 +31,10 @@ const buildSingleBoard = (e) => {
       </div>`;
 
       utils.printToDom('#pins', domString);
+      $('body').on('click', '#back-button', divManip.showBoards);
+      $('body').on('click', '#back-button', divManip.hidePins);
+      $('body').on('click', '#my-boards', divManip.showBoards);
+      $('body').on('click', '#my-boards', divManip.hidePins);
     })
     .catch((err) => console.error('singleBoards broke', err));
 };

@@ -1,9 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import boardList from '../../components/boardList/boardList';
-import boards from '../../components/boards/boards';
-import pins from '../../components/pins/pins';
 import home from '../../components/home/home';
+import divManip from '../../components/divManip/divManip';
 
 const loginButton = $('#google-auth');
 const logoutButton = $('#navbar-logout-button');
@@ -13,15 +12,14 @@ const checkLoginStatus = () => {
     if (user) {
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
-      boards.showDiv();
-      pins.showDiv();
+      divManip.showBoards();
 
       boardList.buildMyBoards();
     } else {
       loginButton.removeClass('hide');
       logoutButton.addClass('hide');
-      boards.hideDiv();
-      pins.hideDiv();
+      divManip.hideBoards();
+      divManip.hidePins();
 
       home.homeBuilder();
     }
