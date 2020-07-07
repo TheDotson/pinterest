@@ -5,7 +5,12 @@ import singleBoard from '../singleBoard/singleBoard';
 import divManip from '../divManip/divManip';
 
 const deleteBoardEvent = (e) => {
-  console.error(e);
+  const boardId = e.target.closest('.card').id;
+  boardData.deleteBoard(boardId)
+    .then(() => {
+      buildMyBoards();
+    })
+    .catch((err) => console.error(err));
 };
 
 const buildMyBoards = () => {
