@@ -8,6 +8,7 @@ const deleteBoardEvent = (e) => {
   const boardId = e.target.closest('.card').id;
   boardData.deleteBoard(boardId)
     .then(() => {
+      // eslint-disable-next-line no-use-before-define
       buildMyBoards();
     })
     .catch((err) => console.error(err));
@@ -28,9 +29,9 @@ const buildMyBoards = () => {
 
       utils.printToDom('#boards', domString);
 
-      $('body').on('click', '#view-board', singleBoard.buildSingleBoard);
-      $('body').on('click', '#view-board', divManip.hideBoards);
-      $('body').on('click', '#delete-board', deleteBoardEvent);
+      $('body').one('click', '#view-board', singleBoard.buildSingleBoard);
+      $('body').one('click', '#view-board', divManip.hideBoards);
+      $('body').one('click', '#delete-board', deleteBoardEvent);
     })
     .catch((err) => console.error('getBoards broke', err));
 };

@@ -31,10 +31,10 @@ const buildSingleBoard = (e) => {
       </div>`;
 
       utils.printToDom('#pins', domString);
-      $('body').on('click', '#back-button', divManip.showBoards);
-      $('body').on('click', '#back-button', divManip.hidePins);
-      $('body').on('click', '#my-boards', divManip.showBoards);
-      $('body').on('click', '#my-boards', divManip.hidePins);
+      $('body').one('click', '#back-button', divManip.showBoards);
+      $('body').one('click', '#back-button', divManip.hidePins);
+      $('body').one('click', '#my-boards', divManip.showBoards);
+      $('body').one('click', '#my-boards', divManip.hidePins);
     })
     .catch((err) => console.error('singleBoards broke', err));
 };
