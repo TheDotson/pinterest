@@ -13,6 +13,7 @@ const checkLoginStatus = () => {
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
       divManip.showBoards();
+      divManip.hideHome();
 
       boardList.buildMyBoards();
     } else {
@@ -20,6 +21,7 @@ const checkLoginStatus = () => {
       logoutButton.addClass('hide');
       divManip.hideBoards();
       divManip.hidePins();
+      divManip.showHome();
 
       home.homeBuilder();
     }
