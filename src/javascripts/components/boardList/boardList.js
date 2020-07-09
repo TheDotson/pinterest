@@ -4,6 +4,16 @@ import boards from '../boards/boards';
 import singleBoard from '../singleBoard/singleBoard';
 import divManip from '../divManip/divManip';
 
+const deleteBoardEvent = (e) => {
+  const boardId = e.target.closest('.card').id;
+  boardData.deleteBoard(boardId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildMyBoards();
+    })
+    .catch((err) => console.error(err));
+};
+
 const buildMyBoards = () => {
   boardData.getBoards()
     .then((response) => {
@@ -21,6 +31,7 @@ const buildMyBoards = () => {
 
       $('body').on('click', '#view-board', singleBoard.buildSingleBoard);
       $('body').on('click', '#view-board', divManip.hideBoards);
+      $('body').on('click', '#delete-board', deleteBoardEvent);
     })
     .catch((err) => console.error('getBoards broke', err));
 };

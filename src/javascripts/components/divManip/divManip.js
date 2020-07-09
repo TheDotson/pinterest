@@ -14,9 +14,19 @@ const hidePins = () => {
   $('#pins').addClass('hide');
 };
 
+const showHome = () => {
+  $('#home').removeClass('hide');
+};
+
+const hideHome = () => {
+  $('#home').addClass('hide');
+};
+
 export default {
   showBoards,
   hideBoards,
   showPins,
   hidePins,
+  showHome,
+  hideHome,
 };
