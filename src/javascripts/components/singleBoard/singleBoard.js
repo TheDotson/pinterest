@@ -8,7 +8,7 @@ const deletePinEvent = (e) => {
   pinData.deletePins(pinId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
-      buildSingleBoard(e);
+      buildSingleBoard();
     })
     .catch((err) => console.error(err));
 };
@@ -24,7 +24,7 @@ const buildSingleBoard = (e) => {
       myPins.forEach((pin) => {
         if (pin.boardId === boardId) {
           domString += `
-          <div class="card text center" style="width: 18rem;">
+          <div class="card text center" id="${pin.id}" style="width: 18rem;">
             <img src="${pin.imageUrl}" class="card-img-top" alt="...">
             <div class="card-body">
               <a target="_blank" href="${pin.link}" class="btn btn-primary">View Pin</a>
