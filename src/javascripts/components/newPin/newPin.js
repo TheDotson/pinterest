@@ -23,7 +23,7 @@ const showPinForm = () => {
   </div>
   `;
 
-  utils.printToDom('#newPin', domString);
+  utils.printToDom('#pinForm', domString);
 };
 
 export default { showPinForm };

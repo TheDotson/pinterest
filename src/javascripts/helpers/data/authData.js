@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import boardList from '../../components/boardList/boardList';
+import singleBoard from '../../components/singleBoard/singleBoard';
 import home from '../../components/home/home';
 import divManip from '../../components/divManip/divManip';
 
@@ -16,6 +17,8 @@ const checkLoginStatus = () => {
       divManip.hideHomeDiv();
 
       boardList.buildMyBoards();
+      boardList.boardEvents();
+      singleBoard.pinEvents();
     } else {
       loginButton.removeClass('hide');
       logoutButton.addClass('hide');

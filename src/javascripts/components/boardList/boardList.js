@@ -2,22 +2,14 @@ import utils from '../../helpers/utils';
 import boardData from '../../helpers/data/boardData';
 import boards from '../boards/boards';
 import singleBoard from '../singleBoard/singleBoard';
-import pinData from '../../helpers/data/pinData';
 import divManip from '../divManip/divManip';
 
 const deleteBoardEvent = (e) => {
   const boardId = e.target.closest('.card').id;
-
-  pinData.getPinsByBoardId(boardId)
-    .then((boardPins) => {
-      boardPins.forEach((pin) => {
-        pinData.deletePins(pin.id);
-      });
-      boardData.deleteBoard(boardId)
-        .then(() => {
-        // eslint-disable-next-line no-use-before-define
-          buildMyBoards();
-        });
+  boardData.deleteBoard(boardId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildMyBoards();
     })
     .catch((err) => console.error(err));
 };
@@ -36,12 +28,14 @@ const buildMyBoards = () => {
       domString += '</div>';
 
       utils.printToDom('#boards', domString);
-
-      $('body').on('click', '#view-board', singleBoard.buildSingleBoard);
-      $('body').on('click', '#delete-board', deleteBoardEvent);
-      $('body').on('click', '#view-board', divManip.hideBoardsDiv);
     })
     .catch((err) => console.error('getBoards broke', err));
 };
 
-export default { buildMyBoards };
+const boardEvents = () => {
+  $('body').on('click', '#view-board', singleBoard.buildSingleBoard);
+  $('body').on('click', '#delete-board', deleteBoardEvent);
+  $('body').on('click', '#view-board', divManip.hideBoardsDiv);
+};
+
+export default { buildMyBoards, boardEvents };

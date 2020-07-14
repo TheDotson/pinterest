@@ -42,10 +42,10 @@ const buildSingleBoard = (e) => {
       myPins.forEach((pin) => {
         if (pin.boardId === boardId) {
           domString += `
-          <div class="card text center" id="${pin.id}" style="width: 18rem;">
+          <div class="card text center" id="${pin.boardId}" style="width: 18rem;">
             <img src="${pin.imageUrl}" class="card-img-top" alt="...">
               <a target="_blank" href="${pin.link}" class="btn btn-primary">View Pin</a>
-              <button class="btn btn-secondary delete-pin" id="${pin.boardId}">Delete pin</button>
+              <button class="btn btn-secondary delete-pin" id="${pin.id}">Delete Pin</button>
           </div>`;
         }
       });
@@ -58,21 +58,12 @@ const buildSingleBoard = (e) => {
         </div>`;
 
       utils.printToDom('#pins', domString);
-      $('body').on('click', '#add-pin', newPin.showPinForm);
-      $('body').on('click', '#pin-creator', addPinEvent);
-      $('body').on('click', '.delete-pin', removePinEvent);
-      $('body').on('click', '#back-button', divManip.showBoardsDiv);
-      $('body').on('click', '#back-button', divManip.hidePinsDiv);
-      $('body').on('click', '#back-button', divManip.hidePinFormDiv);
-      $('body').on('click', '#my-boards', divManip.showBoardsDiv);
-      $('body').on('click', '#my-boards', divManip.hidePinsDiv);
-      $('body').on('click', '#my-boards', divManip.hidePinFormDiv);
     })
     .catch((err) => console.error('singleBoards broke', err));
 };
 
-const rebuildBoards = (e) => {
-  const boardId = e.target.id;
+const rebuildBoards = () => {
+  const boardId = $('#pin-boardId').val();
   divManip.showPinsDiv();
   pinData.getPins()
     .then((response) => {
@@ -82,10 +73,10 @@ const rebuildBoards = (e) => {
       myPins.forEach((pin) => {
         if (pin.boardId === boardId) {
           domString += `
-          <div class="card text center" id="${pin.id}" style="width: 18rem;">
+          <div class="card text center" id="${pin.boardId}" style="width: 18rem;">
             <img src="${pin.imageUrl}" class="card-img-top" alt="...">
               <a target="_blank" href="${pin.link}" class="btn btn-primary">View Pin</a>
-              <button class="btn btn-secondary delete-pin" id="${pin.boardId}">Delete pin</button>
+              <button class="btn btn-secondary delete-pin" id="${pin.id}">Delete pin</button>
           </div>`;
         }
       });
@@ -94,15 +85,24 @@ const rebuildBoards = (e) => {
         </div>
         <div class="text-center mt-5">
           <button class="btn btn-danger" id="back-button">Back</button>
+          <button class="btn btn-info ml-5" id="add-pin"><i class="fas fa-plus"></i></button>
         </div>`;
 
       utils.printToDom('#pins', domString);
-      $('body').on('click', '#back-button', divManip.showBoardsDiv);
-      $('body').on('click', '#back-button', divManip.hidePinsDiv);
-      $('body').on('click', '#my-boards', divManip.showBoardsDiv);
-      $('body').on('click', '#my-boards', divManip.hidePinsDiv);
     })
     .catch((err) => console.error('singleBoards broke', err));
 };
 
-export default { buildSingleBoard };
+const pinEvents = () => {
+  $('body').on('click', '#add-pin', newPin.showPinForm);
+  $('body').on('click', '#pin-creator', addPinEvent);
+  $('body').one('click', '.delete-pin', removePinEvent);
+  $('body').on('click', '#back-button', divManip.showBoardsDiv);
+  $('body').on('click', '#back-button', divManip.hidePinsDiv);
+  $('body').on('click', '#back-button', divManip.hidePinFormDiv);
+  $('body').on('click', '#my-boards', divManip.showBoardsDiv);
+  $('body').on('click', '#my-boards', divManip.hidePinsDiv);
+  $('body').on('click', '#my-boards', divManip.hidePinFormDiv);
+};
+
+export default { buildSingleBoard, pinEvents };

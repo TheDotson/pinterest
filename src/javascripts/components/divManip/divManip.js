@@ -23,11 +23,11 @@ const hideHomeDiv = () => {
 };
 
 const showPinFormDiv = () => {
-  $('#newPin').removeClass('hide');
+  $('#pinForm').removeClass('hide');
 };
 
 const hidePinFormDiv = () => {
-  $('#newPin').addClass('hide');
+  $('#pinForm').addClass('hide');
 };
 
 export default {
