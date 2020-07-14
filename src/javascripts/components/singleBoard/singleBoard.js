@@ -1,14 +1,32 @@
 import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 import divManip from '../divManip/divManip';
+import newPin from '../newPin/newPin';
 import './singleBoard.scss';
 
 const removePinEvent = (e) => {
-  const pinId = e.target.closest('.card').id;
+  e.preventDefault();
+  const pinId = e.target.id;
   pinData.deletePins(pinId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
-      rebuildBoards(e);
+      buildSingleBoard();
+    })
+    .catch((err) => console.error(err));
+};
+
+const addPinEvent = (e) => {
+  e.preventDefault();
+  const newPins = {
+    boardId: $('#pin-boardId').val(),
+    link: $('#pin-webUrl').val(),
+    imageUrl: $('#pin-imageUrl').val(),
+  };
+  pinData.addPin(newPins)
+    .then(() => {
+      divManip.hidePinFormDiv();
+      // eslint-disable-next-line no-use-before-define
+      rebuildBoards();
     })
     .catch((err) => console.error(err));
 };
@@ -24,10 +42,10 @@ const buildSingleBoard = (e) => {
       myPins.forEach((pin) => {
         if (pin.boardId === boardId) {
           domString += `
-          <div class="card text center" id="${pin.id}" style="width: 18rem;">
+          <div class="card text center" id="${pin.boardId}" style="width: 18rem;">
             <img src="${pin.imageUrl}" class="card-img-top" alt="...">
               <a target="_blank" href="${pin.link}" class="btn btn-primary">View Pin</a>
-              <button class="btn btn-secondary delete-pin" id="${pin.boardId}">Delete pin</button>
+              <button class="btn btn-secondary delete-pin" id="${pin.id}">Delete Pin</button>
           </div>`;
         }
       });
@@ -36,6 +54,7 @@ const buildSingleBoard = (e) => {
         </div>
         <div class="text-center mt-5">
           <button class="btn btn-danger" id="back-button">Back</button>
+          <button class="btn btn-info ml-5" id="add-pin"><i class="fas fa-plus"></i></button>
         </div>`;
 
       utils.printToDom('#pins', domString);
@@ -43,8 +62,8 @@ const buildSingleBoard = (e) => {
     .catch((err) => console.error('singleBoards broke', err));
 };
 
-const rebuildBoards = (e) => {
-  const boardId = e.target.id;
+const rebuildBoards = () => {
+  const boardId = $('#pin-boardId').val();
   divManip.showPinsDiv();
   pinData.getPins()
     .then((response) => {
@@ -54,10 +73,10 @@ const rebuildBoards = (e) => {
       myPins.forEach((pin) => {
         if (pin.boardId === boardId) {
           domString += `
-          <div class="card text center" id="${pin.id}" style="width: 18rem;">
+          <div class="card text center" id="${pin.boardId}" style="width: 18rem;">
             <img src="${pin.imageUrl}" class="card-img-top" alt="...">
               <a target="_blank" href="${pin.link}" class="btn btn-primary">View Pin</a>
-              <button class="btn btn-secondary delete-pin" id="${pin.boardId}">Delete pin</button>
+              <button class="btn btn-secondary delete-pin" id="${pin.id}">Delete pin</button>
           </div>`;
         }
       });
@@ -66,6 +85,7 @@ const rebuildBoards = (e) => {
         </div>
         <div class="text-center mt-5">
           <button class="btn btn-danger" id="back-button">Back</button>
+          <button class="btn btn-info ml-5" id="add-pin"><i class="fas fa-plus"></i></button>
         </div>`;
 
       utils.printToDom('#pins', domString);
@@ -74,6 +94,8 @@ const rebuildBoards = (e) => {
 };
 
 const pinEvents = () => {
+  $('body').on('click', '#add-pin', newPin.showPinForm);
+  $('body').on('click', '#pin-creator', addPinEvent);
   $('body').one('click', '.delete-pin', removePinEvent);
   $('body').on('click', '#back-button', divManip.showBoardsDiv);
   $('body').on('click', '#back-button', divManip.hidePinsDiv);
