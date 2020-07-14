@@ -7,7 +7,7 @@ const showForm = () => {
   <form>
     <div class="form-group">
       <label for="board-name">Board Name</label>
-      <input type="text" class="form-control" id="board-name" placeholder="Board Name">
+      <input type="text" class="form-control" id="board-name" placeholder="What are you into?">
     </div>
     <button type="submit" class="btn btn-primary" id="board-maker">Submit</button>
   </form>`;

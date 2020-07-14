@@ -23,6 +23,7 @@ const addBoardEvent = (e) => {
   boardData.addBoard(newBoards)
     .then(() => {
       divManip.hideBoardFormDiv();
+
       // eslint-disable-next-line no-use-before-define
       buildMyBoards();
     })

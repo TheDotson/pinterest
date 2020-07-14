@@ -38,6 +38,14 @@ const hideBoardFormDiv = () => {
   $('#boardForm').addClass('hide');
 };
 
+const showEditPinDiv = () => {
+  $('#editPin').removeClass('hide');
+};
+
+const hideEditPinDiv = () => {
+  $('#editPin').addClass('hide');
+};
+
 export default {
   showBoardsDiv,
   hideBoardsDiv,
@@ -49,4 +57,6 @@ export default {
   hidePinFormDiv,
   showBoardFormDiv,
   hideBoardFormDiv,
+  showEditPinDiv,
+  hideEditPinDiv,
 };
