@@ -1,21 +1,39 @@
 import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 import divManip from '../divManip/divManip';
+import newPin from '../newPin/newPin';
 import './singleBoard.scss';
 
 const removePinEvent = (e) => {
-  const pinId = e.target.closest('.card').id;
+  e.preventDefault();
+  const pinId = e.target.id;
   pinData.deletePins(pinId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
-      rebuildBoards(e);
+      buildSingleBoard();
+    })
+    .catch((err) => console.error(err));
+};
+
+const addPinEvent = (e) => {
+  e.preventDefault();
+  const newPins = {
+    boardId: $('#pin-boardId').val(),
+    link: $('#pin-webUrl').val(),
+    imageUrl: $('#pin-imageUrl').val(),
+  };
+  pinData.addPin(newPins)
+    .then(() => {
+      divManip.hidePinFormDiv();
+      // eslint-disable-next-line no-use-before-define
+      rebuildBoards();
     })
     .catch((err) => console.error(err));
 };
 
 const buildSingleBoard = (e) => {
   const boardId = e.target.closest('.card').id;
-  divManip.showPins();
+  divManip.showPinsDiv();
   pinData.getPins()
     .then((response) => {
       const myPins = response;
@@ -36,21 +54,26 @@ const buildSingleBoard = (e) => {
         </div>
         <div class="text-center mt-5">
           <button class="btn btn-danger" id="back-button">Back</button>
+          <button class="btn btn-info ml-5" id="add-pin"><i class="fas fa-plus"></i></button>
         </div>`;
 
       utils.printToDom('#pins', domString);
-      $('body').on('click', '#back-button', divManip.showBoards);
-      $('body').on('click', '#back-button', divManip.hidePins);
-      $('body').on('click', '#my-boards', divManip.showBoards);
-      $('body').on('click', '#my-boards', divManip.hidePins);
+      $('body').on('click', '#add-pin', newPin.showPinForm);
+      $('body').on('click', '#pin-creator', addPinEvent);
       $('body').on('click', '.delete-pin', removePinEvent);
+      $('body').on('click', '#back-button', divManip.showBoardsDiv);
+      $('body').on('click', '#back-button', divManip.hidePinsDiv);
+      $('body').on('click', '#back-button', divManip.hidePinFormDiv);
+      $('body').on('click', '#my-boards', divManip.showBoardsDiv);
+      $('body').on('click', '#my-boards', divManip.hidePinsDiv);
+      $('body').on('click', '#my-boards', divManip.hidePinFormDiv);
     })
     .catch((err) => console.error('singleBoards broke', err));
 };
 
 const rebuildBoards = (e) => {
   const boardId = e.target.id;
-  divManip.showPins();
+  divManip.showPinsDiv();
   pinData.getPins()
     .then((response) => {
       const myPins = response;
@@ -74,10 +97,10 @@ const rebuildBoards = (e) => {
         </div>`;
 
       utils.printToDom('#pins', domString);
-      $('body').on('click', '#back-button', divManip.showBoards);
-      $('body').on('click', '#back-button', divManip.hidePins);
-      $('body').on('click', '#my-boards', divManip.showBoards);
-      $('body').on('click', '#my-boards', divManip.hidePins);
+      $('body').on('click', '#back-button', divManip.showBoardsDiv);
+      $('body').on('click', '#back-button', divManip.hidePinsDiv);
+      $('body').on('click', '#my-boards', divManip.showBoardsDiv);
+      $('body').on('click', '#my-boards', divManip.hidePinsDiv);
     })
     .catch((err) => console.error('singleBoards broke', err));
 };

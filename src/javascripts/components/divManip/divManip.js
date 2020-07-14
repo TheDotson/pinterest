@@ -1,32 +1,42 @@
-const showBoards = () => {
+const showBoardsDiv = () => {
   $('#boards').removeClass('hide');
 };
 
-const hideBoards = () => {
+const hideBoardsDiv = () => {
   $('#boards').addClass('hide');
 };
 
-const showPins = () => {
+const showPinsDiv = () => {
   $('#pins').removeClass('hide');
 };
 
-const hidePins = () => {
+const hidePinsDiv = () => {
   $('#pins').addClass('hide');
 };
 
-const showHome = () => {
+const showHomeDiv = () => {
   $('#home').removeClass('hide');
 };
 
-const hideHome = () => {
+const hideHomeDiv = () => {
   $('#home').addClass('hide');
 };
 
+const showPinFormDiv = () => {
+  $('#newPin').removeClass('hide');
+};
+
+const hidePinFormDiv = () => {
+  $('#newPin').addClass('hide');
+};
+
 export default {
-  showBoards,
-  hideBoards,
-  showPins,
-  hidePins,
-  showHome,
-  hideHome,
+  showBoardsDiv,
+  hideBoardsDiv,
+  showPinsDiv,
+  hidePinsDiv,
+  showHomeDiv,
+  hideHomeDiv,
+  showPinFormDiv,
+  hidePinFormDiv,
 };

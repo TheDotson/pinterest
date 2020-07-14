@@ -12,16 +12,16 @@ const checkLoginStatus = () => {
     if (user) {
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
-      divManip.showBoards();
-      divManip.hideHome();
+      divManip.showBoardsDiv();
+      divManip.hideHomeDiv();
 
       boardList.buildMyBoards();
     } else {
       loginButton.removeClass('hide');
       logoutButton.addClass('hide');
-      divManip.hideBoards();
-      divManip.hidePins();
-      divManip.showHome();
+      divManip.hideBoardsDiv();
+      divManip.hidePinsDiv();
+      divManip.showHomeDiv();
 
       home.homeBuilder();
     }
