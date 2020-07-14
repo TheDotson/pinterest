@@ -60,9 +60,10 @@ const buildSingleBoard = (e) => {
       myPins.forEach((pin) => {
         if (pin.boardId === boardId) {
           domString += `
-          <div class="card text center" id="${pin.boardId}" style="width: 18rem;">
-            <img src="${pin.imageUrl}" class="card-img-top" alt="...">
-              <a target="_blank" href="${pin.link}" class="btn btn-primary">View Pin</a>
+          <div class="card text center pins" id="${pin.boardId}" style="width: 18rem;">
+            <a href="${pin.link}">
+              <img src="${pin.imageUrl}" class="card-img-top pin-image" alt="...">
+            </a>
               <button class="btn btn-danger delete-pin" id="${pin.id}">Delete Pin</button>
               <button class="btn btn-secondary edit-pin" id="${pin.id}">Update Pin</button>          </div>`;
         }
@@ -92,9 +93,10 @@ const rebuildBoards = () => {
       myPins.forEach((pin) => {
         if (pin.boardId === boardId) {
           domString += `
-          <div class="card text center" id="${pin.boardId}" style="width: 18rem;">
-            <img src="${pin.imageUrl}" class="card-img-top" alt="...">
-              <a target="_blank" href="${pin.link}" class="btn btn-primary">View Pin</a>
+          <div class="card text center pins" id="${pin.boardId}" style="width: 18rem;">
+            <a href="${pin.link}">
+              <img src="${pin.imageUrl}" class="card-img-top pin-image" alt="...">
+            </a>
               <button class="btn btn-danger delete-pin" id="${pin.id}">Delete pin</button>
               <button class="btn btn-secondary edit-pin" id="${pin.id}">Update Pin</button>          </div>`;
         }
