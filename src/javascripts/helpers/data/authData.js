@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import boardList from '../../components/boardList/boardList';
+import singleBoard from '../../components/singleBoard/singleBoard';
 import home from '../../components/home/home';
 import divManip from '../../components/divManip/divManip';
 
@@ -12,16 +13,18 @@ const checkLoginStatus = () => {
     if (user) {
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
-      divManip.showBoards();
-      divManip.hideHome();
+      divManip.showBoardsDiv();
+      divManip.hideHomeDiv();
 
       boardList.buildMyBoards();
+      boardList.boardEvents();
+      singleBoard.pinEvents();
     } else {
       loginButton.removeClass('hide');
       logoutButton.addClass('hide');
-      divManip.hideBoards();
-      divManip.hidePins();
-      divManip.showHome();
+      divManip.hideBoardsDiv();
+      divManip.hidePinsDiv();
+      divManip.showHomeDiv();
 
       home.homeBuilder();
     }
